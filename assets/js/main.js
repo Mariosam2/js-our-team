@@ -73,7 +73,7 @@ function getValues (arrayOfObjects){
             }
         }
         markup = markup.concat(imgMarkup,nameMarkup,roleMarkup);
-        console.log(markup)
+        //console.log(markup)
         contentEl.insertAdjacentHTML('beforeend', markup);
     }
 }
