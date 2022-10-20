@@ -1,7 +1,7 @@
 /* Utilizzando i dati forniti, creare un array di oggetti per rappresentare i membri del team. Ogni membro è caratterizzato dalle seguenti informazioni: nome, ruolo e foto. */
 
 // Milestone 0  Creare l’array di oggetti con le informazioni fornite.
-const container = document.querySelector('.container');
+const row = document.querySelector('.row');
 const teamArray = [
     {
         name: 'Wayne Barnett',
@@ -43,7 +43,7 @@ function printValues (arrayOfObjects){
     for(let i = 0; i < arrayOfObjects.length; i++){
         let object = arrayOfObjects[i];
         for(let key in object){
-            console.log(`${key}: ${object[key]}`);
+            //console.log(`${key}: ${object[key]}`);
         }
     }
 }
@@ -52,23 +52,28 @@ function printValues (arrayOfObjects){
 function getValues (arrayOfObjects){
     for(let i = 0; i < arrayOfObjects.length; i++){
         let object = arrayOfObjects[i];
-        let markup = '';
         let imgMarkup = '';
-        let nameMarkup = '';
         let roleMarkup = '';
+        let nameMarkup = '';
+        let markup = '';
         let cardEl = document.createElement('div');
-        cardEl.classList.add('card');
-        container.append(cardEl);
+        let contentEl = document.createElement('div');
+        cardEl.classList.add('col-4', 'card');
+        contentEl.classList.add('content');
+        cardEl.append(contentEl);
+        row.append(cardEl);
+        
         for(let key in object){
-            if(key === 'img'){
-                imgMarkup = `<img src="./assets/img/${object[key]}">`;
+            if(key === 'role') {
+                roleMarkup = `<span class=${key}>${object[key]}</span>`;
             } else if (key === 'name'){
-                nameMarkup = `<span class=${key}>${object[key]}</span>`;
+                nameMarkup = `<span class=${key}>${object[key]}</span>`
             } else {
-                roleMarkup = `<span class=${key}>${object[key]}</span>`
+                imgMarkup = `<img src="./assets/img/${object[key]}">`
             }
         }
-        markup = imgMarkup + nameMarkup + roleMarkup;
-        cardEl.insertAdjacentHTML('beforeend', markup);
+        markup = markup.concat(imgMarkup,nameMarkup,roleMarkup);
+        console.log(markup)
+        contentEl.insertAdjacentHTML('beforeend', markup);
     }
 }
