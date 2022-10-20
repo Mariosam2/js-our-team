@@ -62,11 +62,8 @@ function printValues(arrayOfObjects) {
  */
 function getValues(arrayOfObjects, domElement) {
     for (let i = 0; i < arrayOfObjects.length; i++) {
-        let markup = '';
         let object = arrayOfObjects[i];
-        let imgMarkup = `<img src="./assets/img/${object['img']}">`;
-        let roleMarkup = `<span class="role">${object['role']}</span>`;
-        let nameMarkup = `<span class="name">${object['name']}</span>`;
+        let markup = `<img src="./assets/img/${object['img']}"><span class="name">${object['name']}</span><span class="role">${object['role']}</span>`;
         let cardEl = document.createElement('div');
         let contentEl = document.createElement('div');
         cardEl.classList.add('col-4', 'card');
@@ -74,7 +71,6 @@ function getValues(arrayOfObjects, domElement) {
         cardEl.append(contentEl);
         domElement.append(cardEl);
         //console.log(object.name);
-        markup = markup.concat(imgMarkup, nameMarkup, roleMarkup);
         //console.log(markup)
         contentEl.insertAdjacentHTML('beforeend', markup);
     }
