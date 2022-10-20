@@ -38,7 +38,13 @@ const teamArray = [
 printValues(teamArray);
 getValues(teamArray);
 
+
+
 // Milestone 1  Stampare su console le informazioni di nome, ruolo e la stringa della foto
+/**
+ * Takes an array of objects and logs each value for every object in the array
+ * @param {object} arrayOfObjects array of objects
+ */
 function printValues (arrayOfObjects){
     for(let i = 0; i < arrayOfObjects.length; i++){
         let object = arrayOfObjects[i];
@@ -49,7 +55,12 @@ function printValues (arrayOfObjects){
 }
 
 // Milestone 2  Stampare le stesse informazioni su DOM sottoforma di stringhe
-function getValues (arrayOfObjects){
+/**
+ * Takes an array of objects and generate the HTML for every object
+ * @param {object} arrayOfObjects array of objects
+ * @param {object} domElement element of the dom where the HTML code is appended
+ */
+function getValues (arrayOfObjects , domElement){
     for(let i = 0; i < arrayOfObjects.length; i++){
         let object = arrayOfObjects[i];
         let imgMarkup = '';
@@ -61,7 +72,7 @@ function getValues (arrayOfObjects){
         cardEl.classList.add('col-4', 'card');
         contentEl.classList.add('content');
         cardEl.append(contentEl);
-        row.append(cardEl);
+        domElement.append(cardEl);
         
         for(let key in object){
             if(key === 'role') {
