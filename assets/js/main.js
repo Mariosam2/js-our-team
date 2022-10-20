@@ -33,10 +33,10 @@ const teamArray = [
         role: 'Graphic Designer',
         img: 'barbara-ramos-graphic-designer.jpg'
     },
-    
+
 ]
 printValues(teamArray);
-getValues(teamArray,row);
+getValues(teamArray, row);
 
 
 
@@ -45,10 +45,10 @@ getValues(teamArray,row);
  * Takes an array of objects and logs each value for every object in the array
  * @param {object} arrayOfObjects array of objects
  */
-function printValues (arrayOfObjects){
-    for(let i = 0; i < arrayOfObjects.length; i++){
+function printValues(arrayOfObjects) {
+    for (let i = 0; i < arrayOfObjects.length; i++) {
         let object = arrayOfObjects[i];
-        for(let key in object){
+        for (let key in object) {
             //console.log(`${key}: ${object[key]}`);
         }
     }
@@ -60,30 +60,21 @@ function printValues (arrayOfObjects){
  * @param {object} arrayOfObjects array of objects
  * @param {object} domElement element of the dom where the HTML code is appended
  */
-function getValues (arrayOfObjects , domElement){
-    for(let i = 0; i < arrayOfObjects.length; i++){
-        let object = arrayOfObjects[i];
-        let imgMarkup = '';
-        let roleMarkup = '';
-        let nameMarkup = '';
+function getValues(arrayOfObjects, domElement) {
+    for (let i = 0; i < arrayOfObjects.length; i++) {
         let markup = '';
+        let object = arrayOfObjects[i];
+        let imgMarkup = `<img src="./assets/img/${object['img']}">`;
+        let roleMarkup = `<span class="role">${object['role']}</span>`;
+        let nameMarkup = `<span class="name">${object['name']}</span>`;
         let cardEl = document.createElement('div');
         let contentEl = document.createElement('div');
         cardEl.classList.add('col-4', 'card');
         contentEl.classList.add('content');
         cardEl.append(contentEl);
         domElement.append(cardEl);
-        
-        for(let key in object){
-            if(key === 'role') {
-                roleMarkup = `<span class=${key}>${object[key]}</span>`;
-            } else if (key === 'name'){
-                nameMarkup = `<span class=${key}>${object[key]}</span>`
-            } else {
-                imgMarkup = `<img src="./assets/img/${object[key]}">`
-            }
-        }
-        markup = markup.concat(imgMarkup,nameMarkup,roleMarkup);
+        //console.log(object.name);
+        markup = markup.concat(imgMarkup, nameMarkup, roleMarkup);
         //console.log(markup)
         contentEl.insertAdjacentHTML('beforeend', markup);
     }
