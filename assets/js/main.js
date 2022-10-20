@@ -36,7 +36,7 @@ const teamArray = [
     
 ]
 printValues(teamArray);
-getValues(teamArray);
+getValues(teamArray,row);
 
 
 
